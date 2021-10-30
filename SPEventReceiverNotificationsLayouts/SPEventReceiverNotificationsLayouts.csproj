@@ -1,0 +1,203 @@
+﻿<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4E717B9-52C2-4DCF-A8D8-84053BBBBFE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SPEventReceiverNotificationsLayouts</RootNamespace>
+    <AssemblyName>SPEventReceiverNotificationsLayouts</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SPCustomHelpers">
+      <HintPath>..\SPCustomHelpers\bin\Debug\SPCustomHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="SPEventReceiverNotificationsLib">
+      <HintPath>..\SPEventReceiverNotificationsLib\bin\Debug\SPEventReceiverNotificationsLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\ConfigEdit.aspx.cs">
+      <DependentUpon>ConfigEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\ConfigEdit.aspx.designer.cs">
+      <DependentUpon>ConfigEdit.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\GlobalConfigEdit.aspx.cs">
+      <DependentUpon>GlobalConfigEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\GlobalConfigEdit.aspx.designer.cs">
+      <DependentUpon>GlobalConfigEdit.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\ListConfigs.aspx.cs">
+      <DependentUpon>ListConfigs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\ListConfigs.aspx.designer.cs">
+      <DependentUpon>ListConfigs.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\SiteAllConfigs.aspx.cs">
+      <DependentUpon>SiteAllConfigs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\SPEventReceiverNotificationsLayouts\SiteAllConfigs.aspx.designer.cs">
+      <DependentUpon>SiteAllConfigs.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{e7969b88-1eda-4ccc-8c19-3cef83c585cb}</FeatureId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{10959740-076f-4ce9-8308-39a653c10876}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List1\List1Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a61a8064-f787-47b2-86ea-9937a62c9608}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List1\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6666e740-b7b8-4ad0-b351-07e1fa214f03}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List2\List2Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{dea46554-333d-4107-bab6-facee3fd15d4}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List2\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f685c438-c773-4a64-9737-0ef4f7b6f7db}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List3\List3Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c67f5ba4-1da0-46fc-ab26-9ef0d65f77df}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List3\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8aa50ab5-c03c-4471-b016-c639b5ac22e7}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List4\List4Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cd031a7e-86c5-49b7-9bd1-96fe723dda98}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List4\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9bb1b80a-d46e-4db5-96b0-7af20e588e88}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List5\List5Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3b662ead-5cd6-48b9-840c-fc4a5ed0f56d}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List5\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{40fd98f4-1f33-4704-9d88-a804a08dc463}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List6\List6Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b2ba92ea-a01d-4ae0-9e08-efe6ea88ebca}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List6\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3e7182ac-a3ac-44c8-9e1e-ef38929ab160}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List7\List7Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2e771fc4-f81d-4eed-9bbe-deffa7ca0246}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List7\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8403d126-0f5d-4cf9-ac1f-c0fa6e18b833}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List8\List8Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2cbd4dfb-dc0b-419a-aea6-7a12b519b6b6}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List8\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{35419c0f-c1ea-4c69-9e76-07ef96cd892c}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List9\List9Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{16924975-6814-43d2-b741-7f00ee5a8c2a}</SharePointProjectItemId>
+    </None>
+    <None Include="ListsDefinitions\List9\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f677a877-7b97-46a5-a16e-2786b406f46f}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{f1d623aa-ead4-4b67-b95e-20b27595d977}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
+    </Content>
+    <Content Include="Layouts\SPEventReceiverNotificationsLayouts\ConfigEdit.aspx" />
+    <Content Include="Layouts\SPEventReceiverNotificationsLayouts\GlobalConfigEdit.aspx" />
+    <Content Include="Layouts\SPEventReceiverNotificationsLayouts\ListConfigs.aspx" />
+    <Content Include="Layouts\SPEventReceiverNotificationsLayouts\SiteAllConfigs.aspx" />
+    <Content Include="ListsDefinitions\List1\Elements.xml" />
+    <Content Include="ListsDefinitions\List1\List1Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List1\Schema.xml" />
+    <Content Include="ListsDefinitions\List2\Elements.xml" />
+    <Content Include="ListsDefinitions\List2\List2Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List2\Schema.xml" />
+    <Content Include="ListsDefinitions\List3\Elements.xml" />
+    <Content Include="ListsDefinitions\List3\List3Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List3\Schema.xml" />
+    <Content Include="ListsDefinitions\List4\Elements.xml" />
+    <Content Include="ListsDefinitions\List4\List4Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List4\Schema.xml" />
+    <Content Include="ListsDefinitions\List5\Elements.xml" />
+    <Content Include="ListsDefinitions\List5\List5Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List5\Schema.xml" />
+    <Content Include="ListsDefinitions\List6\Elements.xml" />
+    <Content Include="ListsDefinitions\List6\List6Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List6\Schema.xml" />
+    <Content Include="ListsDefinitions\List7\Elements.xml" />
+    <Content Include="ListsDefinitions\List7\List7Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List7\Schema.xml" />
+    <Content Include="ListsDefinitions\List8\Elements.xml" />
+    <Content Include="ListsDefinitions\List8\List8Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List8\Schema.xml" />
+    <Content Include="ListsDefinitions\List9\Elements.xml" />
+    <Content Include="ListsDefinitions\List9\List9Instance\Elements.xml" />
+    <Content Include="ListsDefinitions\List9\Schema.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

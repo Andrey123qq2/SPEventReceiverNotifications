@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f1d623aa-ead4-4b67-b95e-20b27595d977" solutionId="f1d623aa-ead4-4b67-b95e-20b27595d977" resetWebServer="false" sharePointProductVersion="15.0" name="SPEventReceiverNotificationsLayouts" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="e7969b88-1eda-4ccc-8c19-3cef83c585cb" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="10959740-076f-4ce9-8308-39a653c10876" />
+  </projectItems>
+</package>

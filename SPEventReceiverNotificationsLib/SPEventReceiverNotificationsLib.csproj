@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D605E14-0CDC-4965-8B9B-B4932A97C568}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SPEventReceiverNotificationsLib</RootNamespace>
+    <AssemblyName>SPEventReceiverNotificationsLib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="SPCustomHelpers">
+      <HintPath>..\SPCustomHelpers\bin\Debug\SPCustomHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="SPItemFieldWrapper">
+      <HintPath>..\SPItemFieldWrapper\bin\Debug\SPItemFieldWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonConstants.cs" />
+    <Compile Include="ConfFilters\ContentTypeFilter.cs" />
+    <Compile Include="Infrastructure\IConfFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyCreator.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyFieldCreator.cs" />
+    <Compile Include="Infrastructure\ISender.cs" />
+    <Compile Include="Infrastructure\ISenderCreator.cs" />
+    <Compile Include="Infrastructure\EventReceiverType.cs" />
+    <Compile Include="MailSender\MailWrapper.cs" />
+    <Compile Include="MailSender\MailWrapperCreator.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\SenderBody.cs" />
+    <Compile Include="Infrastructure\SenderCreatorFactory.cs" />
+    <Compile Include="Infrastructure\SenderType.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\SubjectCreator.cs" />
+    <Compile Include="ConfigItemGlobal.cs" />
+    <Compile Include="ConfigItem.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
