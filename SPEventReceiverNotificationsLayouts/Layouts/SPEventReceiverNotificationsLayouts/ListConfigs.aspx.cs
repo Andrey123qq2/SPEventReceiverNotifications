@@ -33,7 +33,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
                 _pageSPList.RootFolder.Properties,
                 CommonConstants.LIST_PROPERTY_JSON_CONF
             );
-            _parentUrl = Regex.Replace(_currentUrl, "SPListsNotifications/ListConfigs", "listedit", RegexOptions.IgnoreCase);
+            _parentUrl = Regex.Replace(_currentUrl, "SPEventReceiverNotificationsLayouts/ListConfigs", "listedit", RegexOptions.IgnoreCase);
         }
         private void BindDataToPageInfoElements()
         {
