@@ -21,6 +21,6 @@
 		  Sequence="410"
 		  Title="ER Lists Notifications_v2">
 		<UrlAction
-			Url="_layouts/SPListsNotifications/ListConfigs.aspx?List={ListId}" />
+			Url="_layouts/SPEventReceiverNotificationsLayouts/ListConfigs.aspx?List={ListId}" />
 	</CustomAction>
 </Elements>
