@@ -5,21 +5,21 @@
 			<Name>EventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>EventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>EventReceiverNotificationsItemAttachmentAdded</Name>
 			<Type>ItemAttachmentAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -28,14 +28,14 @@
 			<Name>LibsEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>LibsEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -44,14 +44,14 @@
 			<Name>TasksEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>TasksEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -60,14 +60,14 @@
 			<Name>TasksNewEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>TasksNewEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -76,14 +76,14 @@
 			<Name>CalendarEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>CalendarEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -92,14 +92,14 @@
 			<Name>ContactsEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>ContactsEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
@@ -108,14 +108,14 @@
 			<Name>AnnouncementsEventReceiverNotificationsItemUpdating</Name>
 			<Type>ItemUpdating</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 		<Receiver>
 			<Name>AnnouncementsEventReceiverNotificationsItemAdded</Name>
 			<Type>ItemAdded</Type>
 			<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
-			<Class>SPListsNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
+			<Class>SPEventReceiverNotifications.EventReceiverNotifications.EventReceiverNotifications</Class>
 			<SequenceNumber>12000</SequenceNumber>
 		</Receiver>
 	</Receivers>
