@@ -32,6 +32,9 @@ namespace SPItemFieldHelpers
                 {  "Lookup",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperLookup(item, fieldTitle, properties)
                 },
+                {  "LookupMulti",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperLookupMulti(item, fieldTitle, properties)
+                },
                 {  "UserValueCollection",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperUserValueCollection(item, fieldTitle, properties)
                 },
