@@ -38,6 +38,9 @@ namespace SPItemFieldHelpers
                 {  "UserValueCollection",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperUserValueCollection(item, fieldTitle, properties)
                 },
+                {  "Boolean",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperBoolean(item, fieldTitle, properties)
+                },
                 {  "Common",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperCommon(item, fieldTitle, properties)
                 }
