@@ -39,7 +39,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         {
             SettingsLink.HRef = _parentUrl;
             InfoLabel1.Text = "List name: \"" + _pageSPList.Title + "\"";
-            SiteConfigsLink.NavigateUrl = "/_layouts/15/SPListsNotifications/CommonConfigEdit.aspx?Source=" + _currentUrl;
+            SiteConfigsLink.NavigateUrl = "/_layouts/15/SPEventReceiverNotificationsLayouts/GlobalConfigEdit.aspx?Source=" + _currentUrl;
         }
         private void BindDataToParamsTable()
         {
