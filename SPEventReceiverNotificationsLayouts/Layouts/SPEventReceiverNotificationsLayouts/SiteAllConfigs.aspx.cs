@@ -61,7 +61,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
                     ConfEnabled = listAndConf.conf.Enable,
                     ConfTitle = listAndConf.conf.Title,
                     ConfUrl = String.Format(
-                            listAndConf.list.ParentWeb.Url + "/_layouts/15/SPListsNotifications/ConfigEdit.aspx?List={0}&ConfName={1}",
+                            listAndConf.list.ParentWeb.Url + "/_layouts/15/SPEventReceiverNotificationsLayouts/ConfigEdit.aspx?List={0}&ConfName={1}",
                             "{" + listAndConf.list.ID.ToString() + "}", listAndConf.conf.Title)
                 })
                 .ToArray();
