@@ -1,9 +1,5 @@
 ﻿using Microsoft.SharePoint;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {
@@ -29,10 +25,14 @@ namespace SPItemFieldHelpers
         }
         public override string GetValueAfterFriendly()
         {
+            if (ValueAfterRaw == null)
+                return String.Empty;
             return ValueAfterRaw.ToString();
         }
         public override string GetValueBeforeFriendly()
         {
+            if (ValueBeforeRaw == null)
+                return String.Empty;
             return ValueBeforeRaw.ToString();
         }
     }

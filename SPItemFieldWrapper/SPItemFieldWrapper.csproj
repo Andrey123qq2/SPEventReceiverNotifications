@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="SPCustomHelpers">
@@ -47,16 +53,21 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SPItemFieldWrapper.cs" />
+    <Compile Include="SPItemFieldWrapperBoolean.cs" />
     <Compile Include="SPItemFieldWrapperCommon.cs" />
     <Compile Include="SPItemFieldWrapperDateTime.cs" />
     <Compile Include="SPItemFieldWrapperDouble.cs" />
     <Compile Include="SPItemFieldWrapperLookup.cs" />
+    <Compile Include="SPItemFieldWrapperLookupMulti.cs" />
     <Compile Include="SPItemFieldWrapperLookupValueCollection.cs" />
-    <Compile Include="SPItemFieldWrapperSPFieldUserValue.cs" />
+    <Compile Include="SPItemFieldWrapperUser.cs" />
     <Compile Include="SPItemFieldWrapperString.cs" />
-    <Compile Include="SPItemFieldWrapperUserValueCollection.cs" />
+    <Compile Include="SPItemFieldWrapperUserMulti.cs" />
     <Compile Include="_SPItemFieldWrapperExtensions.cs" />
     <Compile Include="_SPItemFieldWrapperFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

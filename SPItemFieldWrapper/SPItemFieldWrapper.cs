@@ -1,8 +1,6 @@
 ﻿using Microsoft.SharePoint;
 using SPCustomHelpers.SPCustomExtensions;
 using System;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {

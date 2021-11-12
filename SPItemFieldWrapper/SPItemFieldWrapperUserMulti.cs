@@ -1,15 +1,12 @@
 ﻿using Microsoft.SharePoint;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {
-    public class SPItemFieldWrapperUserValueCollection : SPItemFieldWrapper
+    public class SPItemFieldWrapperUserMulti : SPItemFieldWrapper
     {
-        public SPItemFieldWrapperUserValueCollection(SPListItem listItem, string fieldTitle, SPItemEventProperties properties) : 
+        public SPItemFieldWrapperUserMulti(SPListItem listItem, string fieldTitle, SPItemEventProperties properties) : 
             base(listItem, fieldTitle, properties)
         {
         }
@@ -41,6 +38,8 @@ namespace SPItemFieldHelpers
         }
         private string GetFriendlyFieldValue(dynamic fieldValue)
         {
+            if (fieldValue == null)
+                return String.Empty;
             SPFieldUserValueCollection fieldValueUsers = new SPFieldUserValueCollection(Item.Web, fieldValue.ToString());
             return String.Join(",", Array.ConvertAll(
                 (new SPFieldUserValueCollection(Item.Web, fieldValue.ToString())).ToArray(),

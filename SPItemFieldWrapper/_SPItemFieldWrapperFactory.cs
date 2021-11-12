@@ -1,8 +1,6 @@
 ﻿using Microsoft.SharePoint;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {
@@ -36,7 +34,10 @@ namespace SPItemFieldHelpers
                     (item, fieldTitle, properties) => new SPItemFieldWrapperLookupMulti(item, fieldTitle, properties)
                 },
                 {  "UserValueCollection",
-                    (item, fieldTitle, properties) => new SPItemFieldWrapperUserValueCollection(item, fieldTitle, properties)
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperUserMulti(item, fieldTitle, properties)
+                },
+                {  "UserMulti",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperUserMulti(item, fieldTitle, properties)
                 },
                 {  "Boolean",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperBoolean(item, fieldTitle, properties)

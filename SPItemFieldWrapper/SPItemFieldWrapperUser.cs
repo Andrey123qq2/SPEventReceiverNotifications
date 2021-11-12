@@ -1,9 +1,5 @@
 ﻿using Microsoft.SharePoint;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {
@@ -44,6 +40,8 @@ namespace SPItemFieldHelpers
         }
         private string GetFriendlyFieldValue(dynamic fieldValue)
         {
+            if (fieldValue == null)
+                return String.Empty;
             try
             {
                 return Item.Web.EnsureUser(new SPFieldUserValue(Item.Web, fieldValue.ToString()).LookupValue).Name;
