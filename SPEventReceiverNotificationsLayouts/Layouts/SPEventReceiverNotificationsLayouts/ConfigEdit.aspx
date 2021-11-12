@@ -167,8 +167,8 @@
                 </h3>
                 <div class="ms-descriptiontext ms-inputformdescription">
                     HTML body Template. <br/>
-                    Field template (example): &lt;p data-intname=&quot;Title&quot; data-showalways=&quot;true&quot; &gt;{NAME}: &lt;s&gt;{PREVVALUE}&lt;/s&gt; {NEWVALUE}&lt;/p&gt; <br/>
-                    Supported macros in body: {ITEMURL} - item URLs, {ATTACHURL} - attachment url, {ATTACHNAME} - attachment name. <br/>
+                    Field template (example): &lt;p data-intname=&quot;Title&quot; data-showalways=&quot;true&quot; &quot; data-constant=&quot;true&quot; &gt;{NAME}: &lt;s&gt;{PREVVALUE}&lt;/s&gt; {NEWVALUE}&lt;/p&gt; <br/>
+                    Supported macros in body: {ITEMURL} - item URLs, {ATTACHURL} - attachment url, {ATTACHNAME} - attachment name, {EDITOR} - editor display name. <br/>
                     Supported macros in field template: {NAME} - field name, {PREVVALUE} - previous field value, {NEWVALUE} - new/current field value
                 </div>
                 </asp:TableCell>
