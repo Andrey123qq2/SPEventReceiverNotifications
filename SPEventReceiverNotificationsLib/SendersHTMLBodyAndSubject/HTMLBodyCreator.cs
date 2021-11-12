@@ -25,7 +25,7 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
         public SenderBody CreateSenderBody()
         {
             _fieldsTemplatesMapCreators = GetFieldsTemplatesAndCreators();
-            bool hasChangedFields = _fieldsTemplatesMapCreators.Values.Any(c => c.IsChanged && !c.ShowAlways);
+            bool hasChangedFields = _fieldsTemplatesMapCreators.Values.Any(c => c.IsChanged && !c.Constant);
             BodyBuilderReplaceFieldsTemplates();
             BodyBuilderReplaceAllGlobalMacros();
             var senderBody = new SenderBody
@@ -59,7 +59,8 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
             _bodyBuilder
                 .Replace("{ITEMURL}", _context.CurrentItem.GetFullUrl())
                 .Replace("{ATTACHURL}", attachmentUrl)
-                .Replace("{ATTACHNAME}", attachmentName);
+                .Replace("{ATTACHNAME}", attachmentName)
+                .Replace("{EDITOR}", _context.EventProperties.UserDisplayName);
         }
     }
 }
