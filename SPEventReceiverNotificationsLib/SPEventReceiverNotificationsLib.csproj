@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonConstants.cs" />
+    <Compile Include="ConfFilters\ChangedBySvcAccountsFilter.cs" />
     <Compile Include="ConfFilters\ContentTypeFilter.cs" />
     <Compile Include="Infrastructure\IConfFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
