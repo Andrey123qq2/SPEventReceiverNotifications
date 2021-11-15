@@ -1,6 +1,4 @@
 ﻿using Microsoft.SharePoint;
-using Microsoft.SharePoint.Utilities;
-using Microsoft.SharePoint.Workflow;
 using SPCustomHelpers;
 using SPEventReceiverNotificationsLib;
 using SPEventReceiverNotificationsLib.ConfFilters;
@@ -9,8 +7,6 @@ using SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Permissions;
-using System.Text.RegularExpressions;
 using ERItemContextAlias = SPCustomHelpers.ERItemContext
     <
         System.Collections.Generic.List<SPEventReceiverNotificationsLib.ConfigItem>,
@@ -93,7 +89,8 @@ namespace SPEventReceiverNotifications.EventReceiverNotifications
         private bool AreFiltersPassed(ConfigItem conf, ERItemContextAlias context)
         {
             List<IConfFilter> _confFilters = new List<IConfFilter> {
-                new ContentTypeFilter (conf, context)
+                new ContentTypeFilter (conf, context),
+                new ChangedBySvcAccountsFilter(conf, context)
             };
             return !_confFilters.Any(f => !f.Passed());
         }
