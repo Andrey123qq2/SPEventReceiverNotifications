@@ -36,7 +36,7 @@ namespace SPItemFieldHelpers
             {
                 string valueBeforeToStringForCompare = GetValueBeforeForCompare();
                 string valueAfterToStringForCompare = GetValueAfterForCompare();
-                valueIsChanged = (valueBeforeToStringForCompare != valueAfterToStringForCompare);
+                valueIsChanged = (valueBeforeToStringForCompare != valueAfterToStringForCompare) && ValueAfterRaw != null;
             }
             else
                 valueIsChanged = !String.IsNullOrEmpty(ValueAfterRaw?.ToString());
