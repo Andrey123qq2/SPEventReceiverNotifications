@@ -1,9 +1,4 @@
 ﻿using SPEventReceiverNotificationsLib.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ERItemContextAlias = SPCustomHelpers.ERItemContext
     <
         System.Collections.Generic.List<SPEventReceiverNotificationsLib.ConfigItem>,
