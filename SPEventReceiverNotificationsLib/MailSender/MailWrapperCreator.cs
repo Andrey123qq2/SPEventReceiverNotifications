@@ -1,14 +1,12 @@
 ﻿using Microsoft.SharePoint;
+using SPCustomHelpers;
+using SPCustomHelpers.SPCustomExtensions;
 using SPEventReceiverNotificationsLib.Infrastructure;
+using SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject;
+using SPItemFieldHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SPCustomHelpers;
-using SPCustomHelpers.SPCustomExtensions;
-using SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject;
-using SPItemFieldHelpers;
 
 namespace SPEventReceiverNotificationsLib.MailSender
 {
@@ -31,9 +29,19 @@ namespace SPEventReceiverNotificationsLib.MailSender
         }
         public ISender CreateSender()
         {
-            var to = GetMailsFromUserFields(_config.ToFields).Concat(_config.ToMails).ToList();
-            var cc = GetMailsFromUserFields(_config.CCFields).Concat(_config.CCMails).ToList();
-            var bcc = GetMailsFromUserFields(_config.BCCFields).Concat(_config.BCCMails).ToList();
+            var to = GetMailsFromUserFields(_config.ToFields)
+                .Concat(_config.ToMails)
+                .Concat(GetMailsFromManagersUserFields(_config.MailFieldsManagers))
+                .Where(m => !String.IsNullOrEmpty(m))
+                .ToList();
+            var cc = GetMailsFromUserFields(_config.CCFields)
+                .Concat(_config.CCMails)
+                .Where(m => !String.IsNullOrEmpty(m))
+                .ToList();
+            var bcc = GetMailsFromUserFields(_config.BCCFields)
+                .Concat(_config.BCCMails)
+                .Where(m => !String.IsNullOrEmpty(m))
+                .ToList();
             var subject = GetSubject();
             var body = _senderBody.Body;
             MailWrapper mailWrapper = new MailWrapper(to, cc, bcc, subject, body, _context.CurrentItem.ParentList.ParentWeb);
@@ -50,6 +58,17 @@ namespace SPEventReceiverNotificationsLib.MailSender
             var mailsFromUserFields = fields
                 .Select(f => SPItemFieldWrapperFactory.Create(_context.CurrentItem, f, _properties))
                 .SelectMany(w => w.GetPrincipals())
+                .SelectMany(p => p.GetMails())
+                .ToList();
+            return mailsFromUserFields;
+        }
+        private List<string> GetMailsFromManagersUserFields(List<string> fields)
+        {
+            var mailsFromUserFields = fields
+                .Select(f => SPItemFieldWrapperFactory.Create(_context.CurrentItem, f, _properties))
+                .SelectMany(w => w.GetPrincipals())
+                .Where(p => p.GetType() == typeof(SPUser))
+                .SelectMany(p => ((SPUser)p).GetUserManagers())
                 .SelectMany(p => p.GetMails())
                 .ToList();
             return mailsFromUserFields;
