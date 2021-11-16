@@ -54,11 +54,15 @@
     <Compile Include="DisableItemEvents.cs" />
     <Compile Include="ERItemContext.cs" />
     <Compile Include="ERItemListItemNullException.cs" />
+    <Compile Include="ISPListModifierStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagConfHelper.cs" />
+    <Compile Include="SPCustomExtensions\SPListExtensions.cs" />
+    <Compile Include="SPCustomExtensions\SPWebApplicationExtensions.cs" />
     <Compile Include="SPHelpers\SPFieldHelpers.cs" />
     <Compile Include="SPHelpers\SPListHelpers.cs" />
     <Compile Include="SPCustomExtensions\SPListItemExtensions.cs" />
+    <Compile Include="SPListContext.cs" />
     <Compile Include="SPLogger.cs" />
     <Compile Include="SPCustomExtensions\SPPrincipalExtensions.cs" />
     <Compile Include="SPCustomExtensions\SPSiteExtensions.cs" />
