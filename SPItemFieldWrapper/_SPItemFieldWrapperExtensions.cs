@@ -1,10 +1,6 @@
 ﻿using Microsoft.SharePoint;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace SPItemFieldHelpers
 {
@@ -15,7 +11,7 @@ namespace SPItemFieldHelpers
             List<SPPrincipal> fieldsPrincipals = new List<SPPrincipal>();
             string userLogin;
             SPListItem item = fieldWrapper.Item;
-            dynamic fieldValue = fieldWrapper.ValueAfterRaw;
+            dynamic fieldValue = fieldWrapper.ValueAfterRaw != null ? fieldWrapper.ValueAfterRaw : fieldWrapper.ValueBeforeRaw;
             if ((fieldValue.GetType().Name == "Int32") || (fieldValue.GetType().Name == "String" && Regex.IsMatch(fieldValue, @"^\d+$")))
             {
                 SPPrincipal principal = item.ParentList.ParentWeb.SiteUsers.GetByID(int.Parse(fieldValue.ToString()));
