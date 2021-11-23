@@ -73,7 +73,6 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
