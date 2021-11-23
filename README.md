@@ -21,10 +21,11 @@ This solution creates a custom SharePoint notifications Event Receiver (ER) that
   * ToFields, ССFields​, BCCFields - adds field's participants to corresponding email field (to, cc, bcc)
   * NotifyManagers - adds field's participants managers to email "to" field
   * BodyTemplate - body template, consists from arbitrary content and fields templates
-  * Field's template example: `<span data-intname="Title" data-showalways="true" data-constant="true" >{NAME}: <s>{PREVVALUE}</s> {NEWVALUE}</span>`
-  * Field's template attributes:
-	* data-showalways - always show field's value undependetly from changes (if data-showalways="false" field template will be hidden)
-	* data-constant - always show field's value without tracking changes
+  * Field template example: 
+  `<span data-intname="Title" data-showalways="true" data-constant="true" >{NAME}: <s>{PREVVALUE}</s> {NEWVALUE}</span>`
+  * Field template attributes:
+	- data-showalways - always show field's value undependetly from changes (if data-showalways="false" field template will be hidden)
+	- data-constant - always show field's value without tracking changes
 1. Supported macro in body template:
   * {ITEMURL} - item URL
   * {ATTACHURL} - attachment URL
