@@ -10,7 +10,7 @@ This solution creates a custom SharePoint notifications Event Receiver (ER) that
   * ConfigEdit.aspx - contains ER parameters
   * GlobalConfigEdit.aspx - global settings (common to all site collection lists)
   * SiteAllConfigs.aspx - list of all ER configs from all lists of site collection
-1. Main parameters:
+5. Main parameters:
   * SendType - notification type (for now only Email)​
   * EventType - list of event types (ItemAdded, ItemUpdating, AttachmentAdded)
   * DisableGlobalAccountExclusion - disables global accounts exclusions (ex. service accounts: "app@sharepoint", svc_*)
@@ -25,19 +25,19 @@ This solution creates a custom SharePoint notifications Event Receiver (ER) that
   ```
   <span data-intname="Title" data-showalways="true" data-constant="true" >{NAME}: <s>{PREVVALUE}</s> {NEWVALUE}</span>
   ```
-  * Field template attributes:
+  - Field template attributes:
 	- data-showalways - always show field's value undependetly from changes (if data-showalways="false" field template will be hidden)
 	- data-constant - always show field's value without tracking changes
-1. Supported macro in body template:
+6. Supported macro in body template:
   * {ITEMURL} - item URL
   * {ATTACHURL} - attachment URL
   * {ATTACHNAME} - attachment name
   * {EDITOR} - editor display name
-1. Supported macro in field template:
+7. Supported macro in field template:
   * {NAME} - field display name (Title)
   * {PREVVALUE} - previous field value
   * {NEWVALUE} - new/current field value
-1. Field body template example:
+8. Field body template example:
 ```
 <!DOCTYPE html>
 <html>
