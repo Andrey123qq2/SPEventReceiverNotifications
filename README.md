@@ -22,7 +22,9 @@ This solution creates a custom SharePoint notifications Event Receiver (ER) that
   * NotifyManagers - adds field's participants managers to email "to" field
   * BodyTemplate - body template, consists from arbitrary content and fields templates
   * Field template example: 
-  `<span data-intname="Title" data-showalways="true" data-constant="true" >{NAME}: <s>{PREVVALUE}</s> {NEWVALUE}</span>`
+  ```
+  <span data-intname="Title" data-showalways="true" data-constant="true" >{NAME}: <s>{PREVVALUE}</s> {NEWVALUE}</span>
+  ```
   * Field template attributes:
 	- data-showalways - always show field's value undependetly from changes (if data-showalways="false" field template will be hidden)
 	- data-constant - always show field's value without tracking changes
@@ -57,6 +59,7 @@ This solution creates a custom SharePoint notifications Event Receiver (ER) that
 	</body>
 </html>
 ```
+
 ### Screenshots
 Main settings page:
 
