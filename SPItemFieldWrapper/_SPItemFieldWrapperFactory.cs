@@ -18,6 +18,9 @@ namespace SPItemFieldHelpers
                 {  "String",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperString(item, fieldTitle, properties)
                 },
+                {  "Note",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperString(item, fieldTitle, properties)
+                },
                 {  "Double",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperDouble(item, fieldTitle, properties)
                 },
