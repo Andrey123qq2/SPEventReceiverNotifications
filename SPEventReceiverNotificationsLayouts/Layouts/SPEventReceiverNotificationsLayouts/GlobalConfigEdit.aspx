@@ -88,6 +88,19 @@
                 <asp:TextBox ID="TextBoxAccountsExclusionsRegexp" runat="server" Width="380"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow ID="TableRow23" runat="server" BackColor="White" >
+            <asp:TableCell>
+                <h3 class="ms-standardheader ms-inputformheader">
+                    BodyTemplate
+                </h3>
+                <div class="ms-descriptiontext ms-inputformdescription">
+                    HTML body Template without fields. Placeholder {0} is used for fields.
+                </div>
+                </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox ID="TextBoxBodyTemplate" runat="server" Width="850" TextMode="MultiLine" Height="350"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
     <asp:Button ID="ButtonOK" runat="server" Text="OK" OnClick="ButtonOK_EventHandler"/>
     <asp:Button ID="ButtonCANCEL" runat="server" Text="Cancel" OnClick="ButtonCANCEL_EventHandler"/>

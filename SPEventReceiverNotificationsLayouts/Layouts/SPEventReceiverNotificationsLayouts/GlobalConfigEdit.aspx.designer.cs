@@ -114,6 +114,24 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         protected global::System.Web.UI.WebControls.TextBox TextBoxAccountsExclusionsRegexp;
 
         /// <summary>
+        /// TableRow23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow23;
+
+        /// <summary>
+        /// TextBoxBodyTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxBodyTemplate;
+
+        /// <summary>
         /// ButtonOK control.
         /// </summary>
         /// <remarks>

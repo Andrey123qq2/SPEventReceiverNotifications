@@ -3,6 +3,8 @@ using Microsoft.SharePoint.WebControls;
 using SPCustomHelpers;
 using SPEventReceiverNotificationsLib;
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificationsLayouts
 {
@@ -15,9 +17,8 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             InitParams();
             if (IsPostBack)
                 return;
-            BindDataToSimpleFields();
+            BindDataToParamsTable();
         }
-
         private void InitParams()
         {
             _currentSite = SPContext.Current.Site;
@@ -27,19 +28,29 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             );
         }
         #region BindData to Page
-        private void BindDataToSimpleFields()
+        private void BindDataToParamsTable()
         {
+            TextBoxToMails.Text = String.Join(";", _globalConf.ToMails);
+            TextBoxCCMails.Text = String.Join(";", _globalConf.CCMails);
+            TextBoxBCCMails.Text = String.Join(";", _globalConf.BCCMails);
+            TextBoxAccountsExclusionsRegexp.Text = _globalConf.AccountsExclusionsRegexp;
+            TextBoxBodyTemplate.Text = _globalConf.BodyTemplate;
         }
         #endregion
         #region SaveData From Page to SPList
-        private void GetDataFromSimpleFieldsToConf()
+        private void GetDataFromParamsTableToConf()
         {
+            _globalConf.ToMails = Regex.Split(TextBoxToMails.Text, @"\s?;\s?|\s?,\s?").ToList();
+            _globalConf.CCMails = Regex.Split(TextBoxCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();
+            _globalConf.BCCMails = Regex.Split(TextBoxBCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();
+            _globalConf.AccountsExclusionsRegexp = TextBoxAccountsExclusionsRegexp.Text;
+            _globalConf.BodyTemplate = TextBoxBodyTemplate.Text;
         }
         #endregion
         #region Base buttons
         protected void ButtonOK_EventHandler(object sender, EventArgs e)
         {
-            GetDataFromSimpleFieldsToConf();
+            GetDataFromParamsTableToConf();
             PropertyBagConfHelper<ConfigItemGlobal>.Set(
                 _currentSite.RootWeb.AllProperties,
                 CommonConstants.SITE_PROPERTY_JSON_CONF, _globalConf
@@ -58,6 +69,5 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             string previousUrl = String.IsNullOrEmpty(sourceUrl) ? SPContext.Current.Web.Url : sourceUrl;
             Response.Redirect(previousUrl);
         }
-
     }
 }
