@@ -21,5 +21,20 @@ namespace SPCustomHelpers.SPCustomExtensions
             });
             return listsWithJSONConf;
         }
+        public static SPList GetListsById(this SPSite site, Guid id)
+        {
+            SPList webList = null;
+            var siteAllWebs = site.AllWebs.Cast<SPWeb>().ToList();
+            foreach (var web in siteAllWebs)
+            {
+                webList = web.Lists
+                    .Cast<SPList>()
+                    .ToList()
+                    .FirstOrDefault(l => l.ID == id);
+                if (webList != null)
+                    break;
+            };
+            return webList;
+        }
     }
 }
