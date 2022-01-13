@@ -18,6 +18,9 @@ namespace SPItemFieldHelpers
                 {  "String",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperString(item, fieldTitle, properties)
                 },
+                {  "Text",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperString(item, fieldTitle, properties)
+                },
                 {  "Note",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperString(item, fieldTitle, properties)
                 },
@@ -35,6 +38,9 @@ namespace SPItemFieldHelpers
                 },
                 {  "LookupMulti",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperLookupMulti(item, fieldTitle, properties)
+                },
+                {  "FilteredLookupField",
+                    (item, fieldTitle, properties) => new SPItemFieldWrapperFilteredLookup(item, fieldTitle, properties)
                 },
                 {  "UserValueCollection",
                     (item, fieldTitle, properties) => new SPItemFieldWrapperUserMulti(item, fieldTitle, properties)
