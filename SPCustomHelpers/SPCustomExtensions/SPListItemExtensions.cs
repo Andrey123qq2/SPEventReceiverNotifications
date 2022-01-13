@@ -156,6 +156,9 @@ namespace SPCustomHelpers.SPCustomExtensions
         {
             return item.Web.Site.Url + item.ParentList.DefaultDisplayFormUrl + "?ID=" + item.ID;
         }
-
+        public static string GetFullBaseUrl(this SPListItem item)
+        {
+            return item.ParentList.ParentWeb.Url + "/" + item.Url;
+        }
     }
 }
