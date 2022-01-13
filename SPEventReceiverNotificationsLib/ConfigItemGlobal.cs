@@ -12,5 +12,6 @@ namespace SPEventReceiverNotificationsLib
         public List<string> CCMails { get; set; } = new List<string> { };
         public List<string> BCCMails { get; set; } = new List<string> { };
         public string AccountsExclusionsRegexp { get; set; }
+        public string BodyTemplate { get; set; }
     }
 }
