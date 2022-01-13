@@ -7,6 +7,7 @@ using SPItemFieldHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace SPEventReceiverNotificationsLib.MailSender
 {
@@ -29,23 +30,70 @@ namespace SPEventReceiverNotificationsLib.MailSender
         }
         public ISender CreateSender()
         {
-            var to = GetMailsFromUserFields(_config.ToFields)
-                .Concat(_config.ToMails)
-                .Concat(GetMailsFromManagersUserFields(_config.MailFieldsManagers))
-                .Where(m => !String.IsNullOrEmpty(m))
-                .ToList();
-            var cc = GetMailsFromUserFields(_config.CCFields)
-                .Concat(_config.CCMails)
-                .Where(m => !String.IsNullOrEmpty(m))
-                .ToList();
-            var bcc = GetMailsFromUserFields(_config.BCCFields)
-                .Concat(_config.BCCMails)
-                .Where(m => !String.IsNullOrEmpty(m))
-                .ToList();
+            var to = GetToMails();
+            var cc = GetCCMails();
+            var bcc = GetBCCMails();
             var subject = GetSubject();
             var body = _senderBody.Body;
-            MailWrapper mailWrapper = new MailWrapper(to, cc, bcc, subject, body, _context.CurrentItem.ParentList.ParentWeb);
+            var replyto = GetReplyToAddress();
+            MailWrapper mailWrapper = new MailWrapper(to, cc, bcc, subject, body, _context.CurrentItem.ParentList.ParentWeb, replyto);
             return mailWrapper;
+        }
+        public List<ISender> CreateSenderMulti()
+        {
+            var to = GetToMails()
+                .Concat(GetCCMails())
+                .Concat(GetBCCMails())
+                .Select(m => m.ToLower())
+                .Distinct()
+                .ToList();
+            var cc = new List<string>();
+            var bcc = new List<string>();
+            var subject = GetSubject();
+            var body = _senderBody.Body;
+            var replyto = GetReplyToAddress();
+            List<ISender> separateSenders = to
+                .Select(m => new MailWrapper(new List<string> { m }, cc, bcc, subject, body, _context.CurrentItem.ParentList.ParentWeb, replyto))
+                .Cast<ISender>()
+                .ToList();
+            return separateSenders;
+        }
+        private List<string> GetToMails()
+        {
+            var toMails = GetMailsFromUserFields(_config.ToFields)
+                .Concat(_config.ToMails)
+                .Concat(GetMailsFromManagersUserFields(_config.MailFieldsManagers))
+                .Concat(_context.ERConfGlobal.ToMails)
+                .Where(m => !String.IsNullOrEmpty(m))
+                .Select(m => m.ToLower())
+                .ToList();
+            return toMails;
+        }
+        private List<string> GetCCMails()
+        {
+            var ccMails = GetMailsFromUserFields(_config.CCFields)
+                .Concat(_config.CCMails)
+                .Concat(_context.ERConfGlobal.CCMails)
+                .Where(m => !String.IsNullOrEmpty(m))
+                .Select(m => m.ToLower())
+                .ToList();
+            return ccMails;
+        }
+        private List<string> GetBCCMails()
+        {
+            var bccMails = GetMailsFromUserFields(_config.BCCFields)
+                .Concat(_config.BCCMails)
+                .Concat(_context.ERConfGlobal.BCCMails)
+                .Where(m => !String.IsNullOrEmpty(m))
+                .Select(m => m.ToLower())
+                .ToList();
+            return bccMails;
+        }
+        private string GetReplyToAddress()
+        {
+            var replytoCreator = new ReplyToCreator(_config.ReplyToTemplate, _context);
+            string replyto = replytoCreator.GetReplyto();
+            return replyto;
         }
         private string GetSubject()
         {
@@ -70,6 +118,7 @@ namespace SPEventReceiverNotificationsLib.MailSender
                 .Where(p => p.GetType() == typeof(SPUser))
                 .SelectMany(p => ((SPUser)p).GetUserManagers())
                 .SelectMany(p => p.GetMails())
+                .Except(_config.ExcludedManagersMails.Select(e => e.ToLower()).ToList())
                 .ToList();
             return mailsFromUserFields;
         }
