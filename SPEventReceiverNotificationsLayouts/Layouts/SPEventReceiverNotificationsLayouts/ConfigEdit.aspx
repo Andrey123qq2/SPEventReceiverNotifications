@@ -81,6 +81,19 @@
                 <asp:DropDownList ID="DropDownListEventType" runat="server"></asp:DropDownList>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow ID="TableRow13" runat="server" BackColor="White" ForeColor="#000">
+            <asp:TableCell Width="200">
+                <h3 class="ms-standardheader ms-inputformheader">
+                    SingleMode
+                </h3>
+                <div class="ms-descriptiontext ms-inputformdescription">
+                    Notification is sent to each recipient separately (not all in one message)
+                </div>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:CheckBox ID="CheckBoxSingleRecipientMode" runat="server"></asp:CheckBox>
+            </asp:TableCell>
+        </asp:TableRow>
          <asp:TableRow ID="TableRow9" runat="server" BackColor="White" >
             <asp:TableCell>
                 <h3 class="ms-standardheader ms-inputformheader">
@@ -146,6 +159,35 @@
                 <asp:TextBox ID="TextBoxBCCMails" runat="server" Width="380"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow ID="TableRow10" runat="server" BackColor="White" >
+            <asp:TableCell Width="500px">
+                <h3 class="ms-standardheader ms-inputformheader">
+                    ExcludedManagersMails
+                </h3>
+                <div class="ms-descriptiontext ms-inputformdescription">
+                    Mails to exclude from NotifyManagers parameter (separeted by ;)
+                </div>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox ID="TextBoxExcludedMails" runat="server" Width="380"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow ID="TableRow11" runat="server" BackColor="White" >
+            <asp:TableCell>
+                <h3 class="ms-standardheader ms-inputformheader">
+                    ReplyToTemplate
+                </h3>
+                <div class="ms-descriptiontext ms-inputformdescription">
+                    ReplyTo address template. <br/>
+                    Supported macros: {ITEMID} - replaced by item id, {LISTGUIDBASE64} - list guid converted to BASE64 string (w/o suffix ==)<br/>
+                    Example: SharePoint-Comments {LISTGUIDBASE64}_{ITEMID}_x041ax043ex043cx043cx04Comments@test.local<br/>
+                    Local part should not be greater then 64 symbols.
+                </div>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox ID="TextBoxReplyToTemplate" runat="server" Width="380"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
         <asp:TableRow ID="TableRow12" runat="server" BackColor="White" >
             <asp:TableCell>
                 <h3 class="ms-standardheader ms-inputformheader">
@@ -167,13 +209,15 @@
                 </h3>
                 <div class="ms-descriptiontext ms-inputformdescription">
                     HTML body Template. <br/>
-                    Field template (example): &lt;p data-intname=&quot;Title&quot; data-showalways=&quot;true&quot; &quot; data-constant=&quot;true&quot; &gt;{NAME}: &lt;s&gt;{PREVVALUE}&lt;/s&gt; {NEWVALUE}&lt;/p&gt; <br/>
                     Supported macros in body: {ITEMURL} - item URLs, {ATTACHURL} - attachment url, {ATTACHNAME} - attachment name, {EDITOR} - editor display name. <br/>
                     Supported macros in field template: {NAME} - field name, {PREVVALUE} - previous field value, {NEWVALUE} - new/current field value
+                    <br/>
+                    <br/>
+                    <asp:Button ID="ButtonBodyTemplateCreate" runat="server" Text="AddBody" OnClick="ButtonBodyTemplateCreate_Click"/>
                 </div>
                 </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox ID="TextBoxBodyTemplate" runat="server" Width="700" TextMode="MultiLine" Height="300"></asp:TextBox>
+                <asp:TextBox ID="TextBoxBodyTemplate" runat="server" Width="850" TextMode="MultiLine" Height="350"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow ID="TableRow32" runat="server" BackColor="White"  ForeColor="#000" >
@@ -190,6 +234,11 @@
         <HeaderStyle Font-Bold="true" HorizontalAlign="Left" CssClass="ms-viewheadertr" />
         <HeaderStyle />
         <Columns>
+            <asp:TemplateField HeaderText="AddToBody" HeaderStyle-Width="50px">
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBoxForBodyTemplate" runat="server" />
+                </ItemTemplate> 
+            </asp:TemplateField> 
             <asp:TemplateField HeaderText="Field" HeaderStyle-Width="200px">
                 <ItemTemplate>
                     <asp:Label ID="LabelFieldName" runat="server" Text='<%# Eval("FieldName") %>'></asp:Label>

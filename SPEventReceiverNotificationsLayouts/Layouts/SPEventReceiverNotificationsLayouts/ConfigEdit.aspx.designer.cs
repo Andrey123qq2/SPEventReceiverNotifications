@@ -123,6 +123,24 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         protected global::System.Web.UI.WebControls.DropDownList DropDownListEventType;
 
         /// <summary>
+        /// TableRow13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow13;
+
+        /// <summary>
+        /// CheckBoxSingleRecipientMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxSingleRecipientMode;
+
+        /// <summary>
         /// TableRow9 control.
         /// </summary>
         /// <remarks>
@@ -213,6 +231,42 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         protected global::System.Web.UI.WebControls.TextBox TextBoxBCCMails;
 
         /// <summary>
+        /// TableRow10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow10;
+
+        /// <summary>
+        /// TextBoxExcludedMails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxExcludedMails;
+
+        /// <summary>
+        /// TableRow11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow11;
+
+        /// <summary>
+        /// TextBoxReplyToTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxReplyToTemplate;
+
+        /// <summary>
         /// TableRow12 control.
         /// </summary>
         /// <remarks>
@@ -238,6 +292,15 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableRow TableRow23;
+
+        /// <summary>
+        /// ButtonBodyTemplateCreate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonBodyTemplateCreate;
 
         /// <summary>
         /// TextBoxBodyTemplate control.

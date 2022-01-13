@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -20,6 +21,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         private SPList _pageSPList;
         private List<ConfigItem> _ListConf;
         private ConfigItem _ListConfByName;
+        private ConfigItemGlobal _globalConf;
         private SPFieldCollection _listFields;
         private readonly string _currentUrl = HttpContext.Current.Request.RawUrl;
         private string _parentUrl;
@@ -47,6 +49,10 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             _ListConfByName = _ListConf.FirstOrDefault(c => c.Title == _confName);
             if (_ListConfByName == null)
                 _ListConfByName = new ConfigItem();
+            _globalConf = PropertyBagConfHelper<ConfigItemGlobal>.Get(
+                _pageSPList.ParentWeb.Site.RootWeb.AllProperties,
+                CommonConstants.SITE_PROPERTY_JSON_CONF
+            );
         }
         #region BindData to Page
         private void BindDataToPageInfoElements()
@@ -59,9 +65,13 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             ConfigNameTextBox.Text = _ListConfByName.Title;
             EnableCheckBox.Checked = _ListConfByName.Enable;
             NotesTextBox.Text = _ListConfByName.Notes;
+            CheckBoxDisableGlobalAccountExclusion.Checked = _ListConfByName.DisableGlobalAccountExclusion;
             TextBoxToMails.Text = String.Join(";", _ListConfByName.ToMails);
             TextBoxCCMails.Text = String.Join(";", _ListConfByName.CCMails);
             TextBoxBCCMails.Text = String.Join(";", _ListConfByName.BCCMails);
+            TextBoxExcludedMails.Text = String.Join(";", _ListConfByName.ExcludedManagersMails);
+            TextBoxReplyToTemplate.Text = _ListConfByName.ReplyToTemplate;
+            CheckBoxSingleRecipientMode.Checked = _ListConfByName.SingleMode;
             TextBoxSubjectTemplate.Text = _ListConfByName.SubjectTemplate;
             TextBoxBodyTemplate.Text = _ListConfByName.BodyTemplate;
             ConfModified.Text = _ListConfByName.ConfModified;
@@ -135,10 +145,14 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             _ListConfByName.Title = ConfigNameTextBox.Text;
             _ListConfByName.Enable = EnableCheckBox.Checked;
             _ListConfByName.Notes = NotesTextBox.Text;
+            _ListConfByName.DisableGlobalAccountExclusion = CheckBoxDisableGlobalAccountExclusion.Checked;
             _ListConfByName.ConfModified = DateTime.Now.ToString();
             _ListConfByName.ToMails = Regex.Split(TextBoxToMails.Text, @"\s?;\s?|\s?,\s?").ToList();
             _ListConfByName.CCMails = Regex.Split(TextBoxCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();
             _ListConfByName.BCCMails = Regex.Split(TextBoxBCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();
+            _ListConfByName.ExcludedManagersMails = Regex.Split(TextBoxExcludedMails.Text, @"\s?;\s?|\s?,\s?").ToList();
+            _ListConfByName.ReplyToTemplate = TextBoxReplyToTemplate.Text;
+            _ListConfByName.SingleMode = CheckBoxSingleRecipientMode.Checked;
             _ListConfByName.SubjectTemplate = TextBoxSubjectTemplate.Text;
             _ListConfByName.BodyTemplate = TextBoxBodyTemplate.Text;
             _ListConfByName.SendType = DropDownListSendType.SelectedValue;
@@ -224,6 +238,30 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             parentUrlTemp2.Remove("ConfName");
             var parentUrl = HttpUtility.UrlDecode(parentUrlTemp2.ToString());
             return parentUrl;
+        }
+        #endregion
+        #region EventHandlers
+        protected void ButtonBodyTemplateCreate_Click(object sender, EventArgs e)
+        {
+            string fieldTemplate = DropDownListEventType.SelectedValue == "ItemUpdating" ?
+                CommonConstants.SETTINGS_BODY_FIELD_TEMPLATE_UPDATINGTYPE :
+                CommonConstants.SETTINGS_BODY_FIELD_TEMPLATE_ADDTYPE;
+            string globalTemplate = _globalConf.BodyTemplate;
+            if (String.IsNullOrEmpty(globalTemplate))
+                globalTemplate = "{0}";
+            var templateBodyBuilder = new StringBuilder();
+            TableFields.Rows
+                .Cast<GridViewRow>()
+                .ToList()
+                .Where(r => ((CheckBox)r.Cells[0].FindControl("CheckBoxForBodyTemplate")).Checked)
+                .ToList()
+                .ForEach(r =>
+                {
+                    var fieldName = ((Label)r.Cells[1].FindControl("LabelFieldName")).Text;
+                    var fieldIntName = ((Label)r.Cells[1].FindControl("LabelFieldIntName")).Text;
+                    templateBodyBuilder.Append(string.Format(fieldTemplate, fieldName, fieldIntName));
+                });
+            TextBoxBodyTemplate.Text = string.Format(globalTemplate, templateBodyBuilder.ToString());
         }
         #endregion
     }
