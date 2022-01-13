@@ -19,8 +19,9 @@ namespace SPEventReceiverNotificationsLib.ConfFilters
         }
         public bool Passed()
         {
-            //TODO: get regexp grom global conf and get disabling from local conf
-            string accountMatch = @"app@sharepoint|svc_";
+            if (_conf.DisableGlobalAccountExclusion)
+                return true;
+            string accountMatch = _context.ERConfGlobal.AccountsExclusionsRegexp;
             return !Regex.IsMatch(_context.EventProperties.UserDisplayName, accountMatch);
         }
     }
