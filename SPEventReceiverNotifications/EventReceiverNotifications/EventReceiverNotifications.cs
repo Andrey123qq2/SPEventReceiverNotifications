@@ -7,6 +7,7 @@ using SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using ERItemContextAlias = SPCustomHelpers.ERItemContext
     <
         System.Collections.Generic.List<SPEventReceiverNotificationsLib.ConfigItem>,
@@ -83,8 +84,19 @@ namespace SPEventReceiverNotifications.EventReceiverNotifications
                 return;
             SenderType sendType = (SenderType)Enum.Parse(typeof(SenderType), conf.SendType);
             ISenderCreator senderCreator = SenderCreatorFactory.GetCreator(sendType, context, conf, senderBody);
-            ISender sender = senderCreator.CreateSender();
-            sender.SendNotification();
+            if (conf.SingleMode)
+            {
+                List<ISender> sendersSingleMode = senderCreator.CreateSenderMulti();
+                //Parallel.ForEach(sendersSingleMode, s => s.SendNotification());
+                sendersSingleMode
+                    .ToList()
+                    .ForEach(s => s.SendNotification());
+            }
+            else
+            {
+                ISender sender = senderCreator.CreateSender();
+                sender.SendNotification();
+            }
         }
         private bool AreFiltersPassed(ConfigItem conf, ERItemContextAlias context)
         {
