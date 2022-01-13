@@ -58,6 +58,7 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
             string attachmentName = Regex.Replace(attachmentUrl, @"^.*\/", "");
             _bodyBuilder
                 .Replace("{ITEMURL}", _context.CurrentItem.GetFullUrl())
+                .Replace("{ITEMBASEURL}", _context.CurrentItem.GetFullBaseUrl())
                 .Replace("{ATTACHURL}", attachmentUrl)
                 .Replace("{ATTACHNAME}", attachmentName)
                 .Replace("{EDITOR}", _context.EventProperties.UserDisplayName);
