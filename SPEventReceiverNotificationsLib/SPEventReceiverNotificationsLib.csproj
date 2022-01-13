@@ -61,11 +61,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyCreator.cs" />
     <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyFieldCreator.cs" />
-    <Compile Include="Infrastructure\ISender.cs" />
     <Compile Include="Infrastructure\ISenderCreator.cs" />
     <Compile Include="Infrastructure\EventReceiverType.cs" />
-    <Compile Include="MailSender\MailWrapper.cs" />
     <Compile Include="MailSender\MailWrapperCreator.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\ReplyToCreator.cs" />
     <Compile Include="SendersHTMLBodyAndSubject\SenderBody.cs" />
     <Compile Include="Infrastructure\SenderCreatorFactory.cs" />
     <Compile Include="Infrastructure\SenderType.cs" />

@@ -4,14 +4,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEventReceiverNotificationsLayouts", "SPEventReceiverNotificationsLayouts\SPEventReceiverNotificationsLayouts.csproj", "{F4E717B9-52C2-4DCF-A8D8-84053BBBBFE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D605E14-0CDC-4965-8B9B-B4932A97C568} = {5D605E14-0CDC-4965-8B9B-B4932A97C568}
+		{901CFD7A-02D3-4284-9487-86AE326C18A9} = {901CFD7A-02D3-4284-9487-86AE326C18A9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEventReceiverNotificationsLib", "SPEventReceiverNotificationsLib\SPEventReceiverNotificationsLib.csproj", "{5D605E14-0CDC-4965-8B9B-B4932A97C568}"
+	ProjectSection(ProjectDependencies) = postProject
+		{68492673-8BBE-4911-A784-00A8B40AE5A1} = {68492673-8BBE-4911-A784-00A8B40AE5A1}
+		{901CFD7A-02D3-4284-9487-86AE326C18A9} = {901CFD7A-02D3-4284-9487-86AE326C18A9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPCustomHelpers", "SPCustomHelpers\SPCustomHelpers.csproj", "{901CFD7A-02D3-4284-9487-86AE326C18A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPItemFieldWrapper", "SPItemFieldWrapper\SPItemFieldWrapper.csproj", "{68492673-8BBE-4911-A784-00A8B40AE5A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{901CFD7A-02D3-4284-9487-86AE326C18A9} = {901CFD7A-02D3-4284-9487-86AE326C18A9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEventReceiverNotifications", "SPEventReceiverNotifications\SPEventReceiverNotifications.csproj", "{0491D58B-E731-448C-96A3-9FBF73B60ECD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D605E14-0CDC-4965-8B9B-B4932A97C568} = {5D605E14-0CDC-4965-8B9B-B4932A97C568}
+		{68492673-8BBE-4911-A784-00A8B40AE5A1} = {68492673-8BBE-4911-A784-00A8B40AE5A1}
+		{901CFD7A-02D3-4284-9487-86AE326C18A9} = {901CFD7A-02D3-4284-9487-86AE326C18A9}
+		{F4E717B9-52C2-4DCF-A8D8-84053BBBBFE5} = {F4E717B9-52C2-4DCF-A8D8-84053BBBBFE5}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF566D11-F481-42CB-9947-71257C94AF40}"
 	ProjectSection(SolutionItems) = preProject
