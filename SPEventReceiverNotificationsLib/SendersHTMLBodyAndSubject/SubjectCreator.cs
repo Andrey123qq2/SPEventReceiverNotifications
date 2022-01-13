@@ -1,12 +1,10 @@
 ﻿using Microsoft.SharePoint;
-using System;
+using SPCustomHelpers;
+using SPItemFieldHelpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using SPCustomHelpers;
-using SPItemFieldHelpers;
 
 namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
 {
@@ -30,10 +28,12 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
                 .Cast<Match>()
                 .Select(m => m.ToString())
                 .ToList()
-                .ForEach(f => subjectBuilder
-                        .Replace(
-                            $"{{{f}}}", SPItemFieldWrapperFactory.Create(_context.CurrentItem, f, _properties).GetValueAfterFriendly())
-                    );
+                .ForEach(f =>
+                {
+                    SPItemFieldWrapper fieldWrapper = SPItemFieldWrapperFactory.Create(_context.CurrentItem, f, _properties);
+                    string fieldValue = fieldWrapper.ValueIsChanged() ? fieldWrapper.GetValueAfterFriendly() : fieldWrapper.GetValueBeforeFriendly();
+                    subjectBuilder.Replace($"{{{f}}}", fieldValue);
+                });
             return subjectBuilder.ToString();
         }
     }
