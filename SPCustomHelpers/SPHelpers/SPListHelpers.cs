@@ -65,6 +65,15 @@ namespace SPCustomHelpers.SPHelpers
             SPListItemCollection items = list.GetItems(spQuery);
             return items;
         }
-
+        public static SPListItem GetSPListItemByUrl(string itemBaseFullUrl)
+        {
+            SPListItem item;
+            using (SPSite site = new SPSite(itemBaseFullUrl))
+            using (SPWeb web = site.OpenWeb())
+            {
+                item = web.GetListItem(itemBaseFullUrl);
+            }
+            return item;
+        }
     }
 }
