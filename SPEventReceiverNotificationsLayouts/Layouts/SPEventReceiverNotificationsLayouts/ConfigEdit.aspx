@@ -213,7 +213,7 @@
                     Supported macros in field template: {NAME} - field name, {PREVVALUE} - previous field value, {NEWVALUE} - new/current field value
                     <br/>
                     <br/>
-                    <asp:Button ID="ButtonBodyTemplateCreate" runat="server" Text="AddBody" OnClick="ButtonBodyTemplateCreate_Click"/>
+                    <asp:Button ID="ButtonBodyTemplateCreate" runat="server" Text="IncludeInBody" OnClick="ButtonBodyTemplateCreate_Click"/>
                 </div>
                 </asp:TableCell>
             <asp:TableCell>
