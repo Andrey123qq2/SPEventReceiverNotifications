@@ -5,31 +5,44 @@ namespace SPItemFieldHelpers
 {
     class SPItemFieldWrapperFilteredLookup : SPItemFieldWrapper
     {
+        private readonly SPFieldLookupValue _lookupValueAfter;
         public SPItemFieldWrapperFilteredLookup(SPListItem listItem, string fieldTitle, SPItemEventProperties properties) :
             base(listItem, fieldTitle, properties)
         {
+            _lookupValueAfter = GetLookupValue(ValueAfterRaw);
         }
         protected override string GetValueBeforeForCompare()
         {
             if (String.IsNullOrEmpty(ValueBeforeRaw?.ToString()))
                 return String.Empty;
             else
-                return ((SPFieldLookupValue)ValueBeforeRaw).LookupId.ToString();
+                return ValueBeforeRaw.LookupId.ToString();
         }
         protected override string GetValueAfterForCompare()
         {
             if (String.IsNullOrEmpty(ValueAfterRaw?.ToString()))
                 return String.Empty;
             else
-                return ((SPFieldLookupValue)ValueAfterRaw).LookupId.ToString();
+                return _lookupValueAfter.LookupId.ToString();
         }
         public override string GetValueAfterFriendly()
         {
-            return ((SPFieldLookupValue)ValueBeforeRaw).LookupValue;
+            if (String.IsNullOrEmpty(ValueAfterRaw?.ToString()))
+                return String.Empty;
+            else
+                return GetLookupValue(ValueAfterRaw).LookupValue;
         }
         public override string GetValueBeforeFriendly()
         {
-            return ((SPFieldLookupValue)ValueAfterRaw).LookupValue;
+            if (String.IsNullOrEmpty(ValueBeforeRaw?.ToString()))
+                return String.Empty;
+            else
+                return ((SPFieldLookupValue)ValueBeforeRaw)?.LookupValue;
+        }
+        private SPFieldLookupValue GetLookupValue(string value)
+        {
+            var lookupValue = new SPFieldLookupValue(value);
+            return lookupValue;
         }
     }
 }
