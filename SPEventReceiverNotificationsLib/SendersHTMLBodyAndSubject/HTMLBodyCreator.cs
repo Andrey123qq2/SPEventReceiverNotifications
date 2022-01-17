@@ -1,11 +1,9 @@
-﻿using System;
+﻿using SPCustomHelpers;
+using SPEventReceiverNotificationsLib.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using SPCustomHelpers;
-using SPCustomHelpers.SPCustomExtensions;
 
 namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
 {
@@ -16,11 +14,13 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
         private readonly string _bodyTemplate;
         private Dictionary<string, HTMLBodyFieldCreator> _fieldsTemplatesMapCreators;
         private readonly StringBuilder _bodyBuilder;
-        public HTMLBodyCreator(string bodyTemplate, ERItemContext<List<ConfigItem>, ConfigItemGlobal> context)
+        private readonly IBodyMacrosResolver _bodyMacrosResolver;
+        public HTMLBodyCreator(string bodyTemplate, ERItemContext<List<ConfigItem>, ConfigItemGlobal> context, IBodyMacrosResolver bodyMacrosResolver)
         {
             _context = context;
             _bodyTemplate = bodyTemplate;
             _bodyBuilder = new StringBuilder(_bodyTemplate);
+            _bodyMacrosResolver = bodyMacrosResolver;
         }
         public SenderBody CreateSenderBody()
         {
@@ -52,16 +52,9 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
         }
         private void BodyBuilderReplaceAllGlobalMacros()
         {
-            string attachmentUrl = _context.EventProperties.EventType == Microsoft.SharePoint.SPEventReceiverType.ItemAttachmentAdded ? 
-                _context.CurrentItem.Web.Url + "/" + _context.EventProperties.AfterUrl?.ToString() :
-                String.Empty;
-            string attachmentName = Regex.Replace(attachmentUrl, @"^.*\/", "");
-            _bodyBuilder
-                .Replace("{ITEMURL}", _context.CurrentItem.GetFullUrl())
-                .Replace("{ITEMBASEURL}", _context.CurrentItem.GetFullBaseUrl())
-                .Replace("{ATTACHURL}", attachmentUrl)
-                .Replace("{ATTACHNAME}", attachmentName)
-                .Replace("{EDITOR}", _context.EventProperties.UserDisplayName);
+            _bodyMacrosResolver.GetMacrosToValues()
+                .ToList()
+                .ForEach(pair => _bodyBuilder.Replace(pair.Key, pair.Value));
         }
     }
 }
