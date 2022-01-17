@@ -13,6 +13,7 @@ namespace SPCustomHelpers
         public readonly SPListItem CurrentItem;
         public readonly SPListItem RelatedItem;
         public readonly string ItemTitle;
+        public readonly string AttachmentUrl;
         public readonly SPItemEventProperties EventProperties;
         public readonly string EventType;
         public readonly bool EventTypeAsync;
@@ -39,6 +40,9 @@ namespace SPCustomHelpers
             ItemTitle = (CurrentItem.Title != "" && CurrentItem.Title != null) ? CurrentItem.Title : CurrentItem["FileLeafRef"].ToString();
             EventType = properties.EventType.ToString();
             EventTypeAsync = !EventType.EndsWith("ing");
+            AttachmentUrl = properties.EventType == SPEventReceiverType.ItemAttachmentAdded ?
+                CurrentItem.Web.Url + "/" + properties.AfterUrl?.ToString() :
+                String.Empty;
 
             if (listRootFolderConfPropertyName != String.Empty)
                 ERConf = PropertyBagConfHelper<T>.Get(
