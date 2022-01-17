@@ -7,7 +7,6 @@ using SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ERItemContextAlias = SPCustomHelpers.ERItemContext
     <
         System.Collections.Generic.List<SPEventReceiverNotificationsLib.ConfigItem>,
@@ -78,7 +77,8 @@ namespace SPEventReceiverNotifications.EventReceiverNotifications
         }
         private void SendNotificationByConf(ConfigItem conf, ERItemContextAlias context)
         {
-            var bodyCreator = new HTMLBodyCreator(conf.BodyTemplate, context);
+            var bodyMacrosResolver = new BodyMacrosResolver(context);
+            var bodyCreator = new HTMLBodyCreator(conf.BodyTemplate, context, bodyMacrosResolver);
             SenderBody senderBody = bodyCreator.CreateSenderBody();
             if (!senderBody.HasChangedFields)
                 return;
