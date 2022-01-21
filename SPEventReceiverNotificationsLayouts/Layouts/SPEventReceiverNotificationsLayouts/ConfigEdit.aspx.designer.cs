@@ -330,6 +330,24 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
         protected global::System.Web.UI.WebControls.Label ConfModified;
 
         /// <summary>
+        /// TableRow14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow14;
+
+        /// <summary>
+        /// ConfModifiedBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ConfModifiedBy;
+
+        /// <summary>
         /// TableFields control.
         /// </summary>
         /// <remarks>

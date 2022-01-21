@@ -75,6 +75,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             TextBoxSubjectTemplate.Text = _ListConfByName.SubjectTemplate;
             TextBoxBodyTemplate.Text = _ListConfByName.BodyTemplate;
             ConfModified.Text = _ListConfByName.ConfModified;
+            ConfModifiedBy.Text = _ListConfByName.ConfModifiedBy;
             DropDownListSendType.DataSource = Enum.GetNames(typeof(SenderType));
             DropDownListSendType.DataBind();
             DropDownListSendType.SelectedValue = _ListConfByName.SendType;
@@ -147,6 +148,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
             _ListConfByName.Notes = NotesTextBox.Text;
             _ListConfByName.DisableGlobalAccountExclusion = CheckBoxDisableGlobalAccountExclusion.Checked;
             _ListConfByName.ConfModified = DateTime.Now.ToString();
+            _ListConfByName.ConfModifiedBy = HttpContext.Current.User.Identity.Name;
             _ListConfByName.ToMails = Regex.Split(TextBoxToMails.Text, @"\s?;\s?|\s?,\s?").ToList();
             _ListConfByName.CCMails = Regex.Split(TextBoxCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();
             _ListConfByName.BCCMails = Regex.Split(TextBoxBCCMails.Text, @"\s?;\s?|\s?,\s?").ToList();

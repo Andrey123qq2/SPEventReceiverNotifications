@@ -226,6 +226,13 @@
                 <asp:Label ID="ConfModified" CssClass="notes" runat="server" Text=""></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow ID="TableRow14" runat="server" BackColor="White"  ForeColor="#000" >
+            <asp:TableCell>Config last modified by</asp:TableCell>
+            <asp:TableCell>
+                <asp:Label ID="ConfModifiedBy" CssClass="notes" runat="server" Text=""></asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+
     </asp:Table>
 
     <SharePoint:SPGridView ID="TableFields" runat="server" AutoGenerateColumns="false">
