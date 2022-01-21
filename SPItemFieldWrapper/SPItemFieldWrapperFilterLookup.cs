@@ -9,7 +9,7 @@ namespace SPItemFieldHelpers
         public SPItemFieldWrapperFilteredLookup(SPListItem listItem, string fieldTitle, SPItemEventProperties properties) :
             base(listItem, fieldTitle, properties)
         {
-            _lookupValueAfter = GetLookupValue(ValueAfterRaw);
+            _lookupValueAfter = ValueAfterRaw?.GetType().Name == "SPFieldLookupValue" ? ValueAfterRaw : GetLookupValue(ValueAfterRaw);
         }
         protected override string GetValueBeforeForCompare()
         {
@@ -30,7 +30,7 @@ namespace SPItemFieldHelpers
             if (String.IsNullOrEmpty(ValueAfterRaw?.ToString()))
                 return String.Empty;
             else
-                return GetLookupValue(ValueAfterRaw).LookupValue;
+                return _lookupValueAfter.LookupValue;
         }
         public override string GetValueBeforeFriendly()
         {
