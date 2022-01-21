@@ -13,5 +13,9 @@ namespace SPCustomHelpers.SPCustomExtensions
             SPListItemCollection items = list.GetItems(spQuery);
             return items;
         }
+        public static string GetFullUrl(this SPList list)
+        {
+            return list.ParentWeb.Site.Url + list.DefaultViewUrl;
+        }
     }
 }
