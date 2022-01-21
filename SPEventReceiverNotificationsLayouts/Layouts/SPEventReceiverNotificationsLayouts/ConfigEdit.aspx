@@ -209,7 +209,7 @@
                 </h3>
                 <div class="ms-descriptiontext ms-inputformdescription">
                     HTML body Template. <br/>
-                    Supported macros in body: {ITEMURL} - item URLs, {ATTACHURL} - attachment url, {ATTACHNAME} - attachment name, {EDITOR} - editor display name. <br/>
+                    Supported macros in body: {ITEMURL} - item URLs, {ATTACHURL} - attachment url, {ATTACHNAME} - attachment name, {EDITOR} - editor display name, {RELATEDITEMURL} - url of related item, {RELATEDITEMTITLE} - title of related item. <br/>
                     Supported macros in field template: {NAME} - field name, {PREVVALUE} - previous field value, {NEWVALUE} - new/current field value
                     <br/>
                     <br/>
