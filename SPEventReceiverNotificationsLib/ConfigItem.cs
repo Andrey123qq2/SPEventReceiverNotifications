@@ -11,6 +11,7 @@ namespace SPEventReceiverNotificationsLib
         public string Title { get; set; }
         public bool Enable { get; set; }
         public string ConfModified { get; set; }
+        public string ConfModifiedBy { get; set; }
         public string Notes { get; set; }
         public string SendType { get; set; }
         public string EventType { get; set; }
