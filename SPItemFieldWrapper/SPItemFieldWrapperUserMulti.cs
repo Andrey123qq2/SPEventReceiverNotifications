@@ -43,7 +43,7 @@ namespace SPItemFieldHelpers
             SPFieldUserValueCollection fieldValueUsers = new SPFieldUserValueCollection(Item.Web, fieldValue.ToString());
             return String.Join(",", Array.ConvertAll(
                 (new SPFieldUserValueCollection(Item.Web, fieldValue.ToString())).ToArray(),
-                p => p.User.Name));
+                p => (p.User != null) ? p.User.LoginName : Item.Web.EnsureUser(p.LookupValue)?.Name ?? p.LookupValue));
         }
     }
 }
