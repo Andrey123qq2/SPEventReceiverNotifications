@@ -66,6 +66,9 @@
     <Compile Include="Infrastructure\EventReceiverType.cs" />
     <Compile Include="MailSender\MailWrapperCreator.cs" />
     <Compile Include="Infrastructure\IBodyMacrosResolver.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyFieldCreatorsFactory.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\HTMLBodyRelatedItemFieldCreator.cs" />
+    <Compile Include="SendersHTMLBodyAndSubject\IBodyFieldCreator.cs" />
     <Compile Include="SendersHTMLBodyAndSubject\ReplyToCreator.cs" />
     <Compile Include="SendersHTMLBodyAndSubject\SenderBody.cs" />
     <Compile Include="Infrastructure\SenderCreatorFactory.cs" />
