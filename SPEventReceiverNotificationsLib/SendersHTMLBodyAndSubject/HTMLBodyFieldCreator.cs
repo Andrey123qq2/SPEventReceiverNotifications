@@ -7,16 +7,16 @@ using System.Text.RegularExpressions;
 
 namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
 {
-    class HTMLBodyFieldCreator
+    class HTMLBodyFieldCreator : IBodyFieldCreator
     {
         public readonly bool ShowAlways;
         public readonly bool Constant;
         public readonly bool IsChanged;
         private readonly ERItemContext<List<ConfigItem>, ConfigItemGlobal> _context;
         private readonly string _fieldTemplate;
-        private readonly Regex _fieldIntNameRegex = new Regex(@"(?<=(data-intname=""))\w+");
-        private readonly Regex _fieldShowAlwaysRegex = new Regex(@"data-showalways=""true""");
-        private readonly Regex _fieldConstantRegex = new Regex(@"data-constant=""true""");
+        private readonly Regex _fieldIntNameRegex = new Regex(@"(?<=(data-intname=""))\w+", RegexOptions.IgnoreCase);
+        private readonly Regex _fieldShowAlwaysRegex = new Regex(@"data-showalways=""true""", RegexOptions.IgnoreCase);
+        private readonly Regex _fieldConstantRegex = new Regex(@"data-constant=""true""", RegexOptions.IgnoreCase);
         private readonly string _commentedFieldTemplate = "<!-- {0} -->";
         private readonly string _fieldIntName;
         private readonly SPItemFieldWrapper _fieldWrapper;
@@ -36,7 +36,7 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
             _valueAfterFriendly = _fieldWrapper.GetValueAfterFriendly();
             IsChanged = CheckChangeConditions();
         }
-        public string CreateHTMLBodyField()
+        public string CreateBodyField()
         {
             string filledFieldTemplate = (!Constant && !ShowAlways && !IsChanged) ?
                 String.Format(_commentedFieldTemplate, _fieldTemplate) :
