@@ -112,15 +112,16 @@ namespace SPEventReceiverNotificationsLib.MailSender
         }
         private List<string> GetMailsFromManagersUserFields(List<string> fields)
         {
-            var mailsFromUserFields = fields
+            var managersMails = fields
                 .Select(f => SPItemFieldWrapperFactory.Create(_context.CurrentItem, f, _properties))
                 .SelectMany(w => w.GetPrincipals())
                 .Where(p => p.GetType() == typeof(SPUser))
                 .SelectMany(p => ((SPUser)p).GetUserManagers())
                 .SelectMany(p => p.GetMails())
+                .Select(m => m.ToLower())
                 .Except(_config.ExcludedManagersMails.Select(e => e.ToLower()).ToList())
                 .ToList();
-            return mailsFromUserFields;
+            return managersMails;
         }
     }
 }
