@@ -1,4 +1,4 @@
-﻿namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
+﻿namespace SPEventReceiverNotificationsLib.Infrastructure
 {
     interface IBodyFieldCreator
     {

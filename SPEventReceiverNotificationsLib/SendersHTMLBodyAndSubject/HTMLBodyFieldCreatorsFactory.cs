@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPEventReceiverNotificationsLib.Infrastructure;
+using System;
 using System.Collections.Generic;
 using ERItemContextAlias = SPCustomHelpers.ERItemContext
     <
