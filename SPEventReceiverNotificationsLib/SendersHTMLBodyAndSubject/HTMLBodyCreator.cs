@@ -10,9 +10,10 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
     public class HTMLBodyCreator
     {
         protected readonly ERItemContext<List<ConfigItem>, ConfigItemGlobal> _context;
-        private readonly Regex _fieldTemplateRegex = new Regex("<span data-intname=[^>]+>.+?</span>");
+        private readonly Regex _fieldTemplateRegex = new Regex("<span data-intname=[^>]+>.+?</span>", RegexOptions.IgnoreCase);
+        private readonly Regex _fieldTemplateTypeRegex = new Regex(@"(?<=(data-fieldtype=""))\w+", RegexOptions.IgnoreCase);
         private readonly string _bodyTemplate;
-        private Dictionary<string, HTMLBodyFieldCreator> _fieldsTemplatesMapCreators;
+        private Dictionary<string, IBodyFieldCreator> _fieldsTemplatesMapCreators;
         private readonly StringBuilder _bodyBuilder;
         private readonly IBodyMacrosResolver _bodyMacrosResolver;
         public HTMLBodyCreator(string bodyTemplate, ERItemContext<List<ConfigItem>, ConfigItemGlobal> context, IBodyMacrosResolver bodyMacrosResolver)
@@ -25,7 +26,10 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
         public SenderBody CreateSenderBody()
         {
             _fieldsTemplatesMapCreators = GetFieldsTemplatesAndCreators();
-            bool hasChangedFields = _fieldsTemplatesMapCreators.Values.Any(c => c.IsChanged && !c.Constant);
+            bool hasChangedFields = _fieldsTemplatesMapCreators
+                .Values
+                .Where(v => v is HTMLBodyFieldCreator)
+                .Any(c => ((HTMLBodyFieldCreator)c).IsChanged && !((HTMLBodyFieldCreator)c).Constant);
             BodyBuilderReplaceFieldsTemplates();
             BodyBuilderReplaceAllGlobalMacros();
             var senderBody = new SenderBody
@@ -35,20 +39,20 @@ namespace SPEventReceiverNotificationsLib.SendersHTMLBodyAndSubject
             };
             return senderBody;
         }
-        private Dictionary<string, HTMLBodyFieldCreator> GetFieldsTemplatesAndCreators()
+        private Dictionary<string, IBodyFieldCreator> GetFieldsTemplatesAndCreators()
         {
             var fieldsTemplatesMapCreators = _fieldTemplateRegex
                 .Matches(_bodyTemplate)
                 .Cast<Match>()
                 .Select(m => m.ToString())
-                .ToDictionary(t => t, t => new HTMLBodyFieldCreator(t, _context));
+                .ToDictionary(t => t, t => HTMLBodyFieldCreatorsFactory.GetCreator(t, _context, _fieldTemplateTypeRegex.Match(t)?.ToString()));
             return fieldsTemplatesMapCreators;
         }
         private void BodyBuilderReplaceFieldsTemplates()
         {
             _fieldsTemplatesMapCreators
                 .ToList()
-                .ForEach(pair => _bodyBuilder.Replace(pair.Key, pair.Value.CreateHTMLBodyField()));
+                .ForEach(pair => _bodyBuilder.Replace(pair.Key, pair.Value.CreateBodyField()));
         }
         private void BodyBuilderReplaceAllGlobalMacros()
         {
