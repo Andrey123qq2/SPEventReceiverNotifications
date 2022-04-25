@@ -88,6 +88,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
                 ?.Cast<ListItem>()
                 .ToList()
                 .ForEach(i => i.Selected = _ListConfByName.ContentTypeFilter != null && _ListConfByName.ContentTypeFilter.Contains(i.Text));
+            TextBoxFieldValuesFitler.Text = _ListConfByName.FieldsValuesFilter;
         }
         private void BindDataToTableFields()
         {
@@ -165,6 +166,7 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
                 .Where(i => i.Selected)
                 .Select(i => i.Text)
                 .ToList();
+            _ListConfByName.FieldsValuesFilter = TextBoxFieldValuesFitler.Text;
             //CheckBoxListContentTypeFilter
         }
         private void GetDataFromTableFieldsToConf()

@@ -120,6 +120,19 @@
                 <asp:CheckBoxList ID="CheckBoxListContentTypeFilter" runat="server"></asp:CheckBoxList>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow ID="TableRow15" runat="server" BackColor="White" >
+            <asp:TableCell>
+                <h3 class="ms-standardheader ms-inputformheader">
+                    FieldValuesFitler
+                </h3>
+                <div class="ms-descriptiontext ms-inputformdescription">
+                    Fields values fitler in JSON format
+                </div>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox ID="TextBoxFieldValuesFitler" runat="server" Width="380" TextMode="MultiLine" Height="100"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
         <asp:TableRow ID="TableRow6" runat="server" BackColor="White" >
             <asp:TableCell Width="500px">
                 <h3 class="ms-standardheader ms-inputformheader">
