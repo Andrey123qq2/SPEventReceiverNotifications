@@ -40,6 +40,9 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SPCustomHelpers">
       <HintPath>..\SPCustomHelpers\bin\Debug\SPCustomHelpers.dll</HintPath>
     </Reference>
@@ -150,6 +153,7 @@
     <None Include="ListsDefinitions\List9\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{f677a877-7b97-46a5-a16e-2786b406f46f}</SharePointProjectItemId>
     </None>
+    <None Include="packages.config" />
     <None Include="Package\Package.package">
       <PackageId>{f1d623aa-ead4-4b67-b95e-20b27595d977}</PackageId>
     </None>
