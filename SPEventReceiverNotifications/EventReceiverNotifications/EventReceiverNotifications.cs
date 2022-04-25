@@ -102,7 +102,8 @@ namespace SPEventReceiverNotifications.EventReceiverNotifications
         {
             List<IConfFilter> _confFilters = new List<IConfFilter> {
                 new ContentTypeFilter (conf, context),
-                new ChangedBySvcAccountsFilter(conf, context)
+                new ChangedBySvcAccountsFilter(conf, context),
+                new FieldsValuesFilter(conf, context)
             };
             return !_confFilters.Any(f => !f.Passed());
         }
