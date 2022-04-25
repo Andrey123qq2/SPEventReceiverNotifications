@@ -1,8 +1,10 @@
 ﻿using Microsoft.SharePoint;
 using Microsoft.SharePoint.WebControls;
+using Newtonsoft.Json;
 using SPCustomHelpers;
 using SPCustomHelpers.SPHelpers;
 using SPEventReceiverNotificationsLib;
+using SPEventReceiverNotificationsLib.ConfFilters;
 using SPEventReceiverNotificationsLib.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -202,8 +204,25 @@ namespace SPEventReceiverNotificationsLayouts.Layouts.SPEventReceiverNotificatio
                 _ListConfByName.GetType().GetProperty(ctrId)?.SetValue(_ListConfByName, valueList);
             }
         }
+        private bool FieldsValuesFilterValueIsCorrect()
+        {
+            FieldValuesFitlerError.Visible = false;
+            try
+            {
+                JsonConvert.DeserializeObject<List<FieldsValuesFilterSingle>>(TextBoxFieldValuesFitler.Text);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                FieldValuesFitlerError.InnerText = "* Error parsing value. " + ex.Message;
+                FieldValuesFitlerError.Visible = true;
+                return false;
+            }
+        }
         protected void ButtonOK_EventHandler(object sender, EventArgs e)
         {
+            if (!FieldsValuesFilterValueIsCorrect())
+                return;
             _ListConf.Remove(_ListConfByName);
             GetDataFromTableMainParamsToConfByName();
             GetDataFromTableFieldsToConf();

@@ -128,6 +128,7 @@
                 <div class="ms-descriptiontext ms-inputformdescription">
                     Fields values fitler in JSON format
                 </div>
+                <span runat="server" id="FieldValuesFitlerError" Visible="false" class="ms-formvalidation custom-formvalidation">* Error parsing value.</span>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox ID="TextBoxFieldValuesFitler" runat="server" Width="380" TextMode="MultiLine" Height="100"></asp:TextBox>
