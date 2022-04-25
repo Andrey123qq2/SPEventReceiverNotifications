@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SPEventReceiverNotificationsLib
 {
@@ -29,5 +25,6 @@ namespace SPEventReceiverNotificationsLib
         public List<string> CCFields { get; set; } = new List<string>();
         public List<string> BCCFields { get; set; } = new List<string>();
         public List<string> MailFieldsManagers { get; set; } = new List<string>();
+        public string FieldsValuesFilter { get; set; }
     }
 }
