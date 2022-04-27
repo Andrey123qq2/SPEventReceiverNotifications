@@ -22,6 +22,8 @@ namespace SPEventReceiverNotificationsLib.ConfFilters
         }
         public bool Passed()
         {
+            if (string.IsNullOrEmpty(_conf.FieldsValuesFilter))
+                return true;
             List<FieldsValuesFilterSingle> fieldsValuesFilter = 
                 JsonConvert.DeserializeObject<List<FieldsValuesFilterSingle>>(_conf.FieldsValuesFilter);
             bool filterResult = false;
